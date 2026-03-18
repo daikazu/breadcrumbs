@@ -1,0 +1,131 @@
+# Composer Related
+composer.lock
+/vendor
+
+# Frontend Assets
+/node_modules
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Caches
+.phpunit.cache
+.phpunit.result.cache
+/build
+
+# IDE Helper
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# Editors
+/.idea
+/.fleet
+/.vscode
+
+# Misc
+phpunit.xml
+phpstan.neon
+testbench.yaml
+/docs
+/coverage
+
+
+### AI Coding Tools template
+# Aider
+.aider.model.metadata.json
+.aider.tags.cache.v3/
+
+# Amazon Q
+.aws/amazonq/
+
+# Amp / Goose shared
+.agents/
+
+# Antigravity
+.agent/
+
+# Claude Code (local overrides only — commit CLAUDE.md)
+CLAUDE.local.md
+.claude/
+
+# Cline
+.cline/
+
+# Codex CLI (OpenAI)
+.codex/
+
+# Continue
+.continue/
+
+# Cursor (commit .cursorrules if shared)
+.cursor/
+.cursorignore
+.cursorrules
+
+# Factory
+.factory/
+
+# Gemini CLI (commit GEMINI.md if shared)
+.gemini/
+GEMINI.md
+
+# Goose
+.goose/
+
+# Kilo Code
+.kilocode/
+
+# Kiro
+.kiro/
+
+# Laravel Boost / general AI tools
+.ai/
+.boost.json
+boost.json
+
+# MCP (Model Context Protocol — local config)
+.mcp.json
+
+# Mistral Vibe
+.vibe/
+
+# OpenCode
+.opencode/
+opencode.json
+
+# OpenHands
+.openhands/
+
+# Pi
+.pi/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Qwen
+.qwen/
+
+# Roo Code
+.roo/
+.rooignore
+.roomodes
+
+# Ruler (meta-tool)
+.ruler/
+
+# Sourcegraph Amp
+.amp/
+
+# Warp
+.warp/
+
+# Windsurf (commit .windsurfrules if shared)
+.windsurf/
+
+# Zed
+.zed/
+
+# JetBrains Junie
+.junie/
