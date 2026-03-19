@@ -11,17 +11,16 @@ use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__ . '/config',
-        __DIR__ . '/resources',
-        __DIR__ . '/routes',
+        __DIR__.'/config',
+        __DIR__.'/resources',
     ])
     ->withSkip([
         AddOverrideAttributeToOverriddenMethodsRector::class,
-        __DIR__ . '/tests',
-        __DIR__ . '/vendor',
-        __DIR__ . '/artisan',
+        __DIR__.'/tests',
+        __DIR__.'/vendor',
+        __DIR__.'/artisan',
         DeclareStrictTypesRector::class => [
-            __DIR__ . '/resources/**/*.blade.php',
+            __DIR__.'/resources/**/*.blade.php',
         ],
     ])
     ->withRules([
