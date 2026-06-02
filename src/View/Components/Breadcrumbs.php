@@ -21,7 +21,7 @@ class Breadcrumbs extends Component
 
         $this->breadcrumbs = $routeName !== null
             ? $manager->generate($routeName, ...$params)
-            : $manager->current();
+            : $manager->current(...$params);
     }
 
     public function render(): View

@@ -165,6 +165,39 @@ Breadcrumbs::for('orders.items.show', function (Trail $trail, Order $order, Orde
 
 ---
 
+### Passing resolved objects to `current()`
+
+When a route only binds a scalar — for example `/blog/{slug}` where the model is
+fetched manually (a remote API, a cache, a custom query) rather than via route
+model binding — `Breadcrumbs::current()` would otherwise hand the raw slug string
+to your closure. Pass the already-resolved object explicitly to override the route
+parameters and avoid a second lookup:
+
+```php
+Breadcrumbs::for('blog.post', function (Trail $trail, $post) {
+    $trail->parent('blog.index')
+          ->push($post->title, route('blog.post', $post->slug));
+});
+
+// In a controller or view where $post is already loaded:
+Breadcrumbs::current($post);
+```
+
+Explicit parameters are matched **positionally**, so the closure's parameter name
+does not matter — `current($post)` fills the first non-`Trail` argument whether it
+is called `$post`, `$model`, or anything else. Pass multiple values in order for
+multi-segment routes:
+
+```php
+// function (Trail $trail, $category, $product)
+Breadcrumbs::current($category, $product);
+```
+
+Calling `Breadcrumbs::current()` with no arguments is unchanged — it still resolves
+from the current route's bound parameters.
+
+---
+
 ### HasBreadcrumb Interface
 
 As an alternative to registering a closure, an Eloquent model can own its own breadcrumb definition by implementing `Daikazu\Breadcrumbs\Contracts\HasBreadcrumb`.
@@ -215,6 +248,14 @@ Pass route parameters when the target route requires them:
 
 ```blade
 <x-breadcrumbs route-name="products.show" :params="[$product]" />
+```
+
+`:params` may also be used **without** `route-name` to forward resolved objects to
+the current route — handy when the route binds only a scalar (e.g. a slug) but the
+closure expects the full model (see [Passing resolved objects to `current()`](#passing-resolved-objects-to-current)):
+
+```blade
+<x-breadcrumbs :params="[$post]" />
 ```
 
 #### JSON-LD schema directive

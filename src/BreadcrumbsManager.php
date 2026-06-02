@@ -53,7 +53,20 @@ class BreadcrumbsManager
         return new BreadcrumbTrail;
     }
 
-    public function current(): BreadcrumbTrail
+    /**
+     * Generate the breadcrumb trail for the current route.
+     *
+     * By default the route's bound parameters are passed to the matching
+     * definition. Pass explicit parameters to override them — useful when the
+     * route only binds a scalar (e.g. a slug) but a closure expects the fully
+     * resolved model, avoiding a second lookup:
+     *
+     *     Breadcrumbs::current($post);
+     *
+     * Explicit parameters are matched against the closure positionally, so the
+     * closure's parameter name does not matter.
+     */
+    public function current(mixed ...$params): BreadcrumbTrail
     {
         $route = Route::current();
 
@@ -71,7 +84,9 @@ class BreadcrumbsManager
             return new BreadcrumbTrail;
         }
 
-        $params = $route->parameters();
+        if ($params === []) {
+            $params = $route->parameters();
+        }
 
         return $this->generate($routeName, ...$params);
     }
