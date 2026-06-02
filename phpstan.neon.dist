@@ -3,6 +3,9 @@ includes:
 
 parameters:
     level: 5
+    # Dependencies float (no committed composer.lock), so some baseline entries are
+    # only reported on certain Laravel versions. Don't fail the build when they don't match.
+    reportUnmatchedIgnoredErrors: false
     paths:
         - src
         - config
